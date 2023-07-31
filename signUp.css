@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Manrope:wght@200;300;400;500;600;700;800&family=Poppins:wght@200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,700&display=swap");
+
+:root {
+  --primary: #f46500;
+  --secondary: #264301;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+main {
+  height: 100vh !important;
+  border: 2px solid black;
+  flex-wrap: nowrap;
+}
+.left-container {
+  height: 90%;
+  width: 20%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 3rem 0 0 12rem;
+  gap: 10px;
+}
+
+.img-container {
+  height: 50%;
+  width: 80%;
+  margin-top: 5%;
+  margin-left: 5%;
+  background: url("https://s3-alpha-sig.figma.com/img/316f/edf8/48ba0a8f18eb3b627dc3af5cf10d06f5?Expires=1691971200&Signature=dFqpPGTewNrm-BRIitou1qDUSy4VMpOjpRPhgjLx~jWIBVLdb7f4SKBKnW6N252~MyT7MZobEh0PJBJLrYHnyN64KmyIDMAh7V1JnaSXsmlIHAJW0d7efV3JY8hcDOrUC1TUS6nUnqS3YDy0yXw5ZC9abP0WISuh6OmWEhY1-z5bX~R7Kz7~DoXJp-fXO9ghPSlWtsDXMs9TpYVjPQlc6rl1hD9MVpUIyZoeSBlsTStNrWBoX0XEPaVcdlmvS-uiiViozaxIqmNV8gGM5-Ya4en5-tXqmp6JrgDPVAd8-7Gs9ueB6yTvvIgJD~Y3jUSJP4HyzbKDKLUAaD~vR-hqbA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4");
+  background-position: center;
+  background-repeat: none;
+  background-size: cover;
+  position: absolute;
+}
+
+.eclipses {
+  transform: rotate(90deg);
+
+  margin-top: 120%;
+}
+
+.eclipses img {
+  position: absolute;
+  bottom: 10%;
+  right: 5%;
+}
+form {
+  margin: 0 auto !important;
+  width: 60% !important;
+}
+form input,
+.h6 {
+  padding: 0.5rem !important;
+  margin-bottom: 1.5rem;
+}
+.form input:focus {
+  outline: 1px solid var(--primary) !important;
+}
+.btn {
+  width: 100% !important;
+  margin-bottom: 1rem;
+  border: 1px solid var(--primary);
+  background-color: var(--primary);
+}
+.social-btn button {
+  background-color: transparent;
+}
+.btn .btn-primary {
+  background-color: var(--primary) !important;
+}
+
+.btn:hover {
+  color: #fff;
+  background-color: var(--primary);
+}
+
+.btn svg {
+  margin-right: 1rem !important;
+}
+.link-opacity-100 {
+  color: var(--secondary);
+}
