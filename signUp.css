@@ -4,6 +4,9 @@
   --primary: #f46500;
   --secondary: #264301;
 }
+* {
+  font-family: Manrope;
+}
 
 a {
   text-decoration: none !important;
@@ -12,36 +15,53 @@ a {
 main {
   height: 100vh !important;
   border: 2px solid black;
+
   flex-wrap: nowrap;
 }
 .left-container {
   height: 90%;
-  width: 20%;
+  width: 30%;
   position: relative;
   display: flex;
   flex-direction: column;
-  margin: 3rem 0 0 12rem;
-  gap: 10px;
+  justify-content: center;
+  align-items: flex-end;
+  margin-left: 7rem;
 }
 
 .img-container {
   height: 50%;
-  width: 80%;
-  margin-top: 5%;
+  width: 50%;
   margin-left: 5%;
   background: url("https://s3-alpha-sig.figma.com/img/316f/edf8/48ba0a8f18eb3b627dc3af5cf10d06f5?Expires=1691971200&Signature=dFqpPGTewNrm-BRIitou1qDUSy4VMpOjpRPhgjLx~jWIBVLdb7f4SKBKnW6N252~MyT7MZobEh0PJBJLrYHnyN64KmyIDMAh7V1JnaSXsmlIHAJW0d7efV3JY8hcDOrUC1TUS6nUnqS3YDy0yXw5ZC9abP0WISuh6OmWEhY1-z5bX~R7Kz7~DoXJp-fXO9ghPSlWtsDXMs9TpYVjPQlc6rl1hD9MVpUIyZoeSBlsTStNrWBoX0XEPaVcdlmvS-uiiViozaxIqmNV8gGM5-Ya4en5-tXqmp6JrgDPVAd8-7Gs9ueB6yTvvIgJD~Y3jUSJP4HyzbKDKLUAaD~vR-hqbA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4");
   background-position: center;
   background-repeat: none;
   background-size: cover;
+}
+
+.circle {
+  background-color: #f46500;
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
   position: absolute;
+  right: -70px;
+  bottom: 18%;
 }
-
-.eclipses {
-  transform: rotate(90deg);
-
-  margin-top: 120%;
+.circle-2 {
+  width: 5rem;
+  height: 5rem;
+  background-color: #f5f0f6;
+  right: -15px;
+  bottom: 10%;
 }
-
+.circle-3 {
+  width: 4rem;
+  height: 4rem;
+  background-color: #f46500;
+  right: 7%;
+  bottom: 4%;
+}
 .eclipses img {
   position: absolute;
   bottom: 10%;
@@ -49,7 +69,7 @@ main {
 }
 form {
   margin: 0 auto !important;
-  width: 60% !important;
+  width: 70% !important;
 }
 form input,
 .h6 {
@@ -75,6 +95,7 @@ form input,
 .btn:hover {
   color: #fff;
   background-color: var(--primary);
+  border: 1px solid #f46500;
 }
 
 .btn svg {
@@ -83,3 +104,23 @@ form input,
 .link-opacity-100 {
   color: var(--secondary);
 }
+
+/* @media screen and (max-width: 438px) {
+  html {
+    overflow-y: scroll;
+  }
+  main {
+    display: block;
+  }
+  .left-container {
+    display: none;
+  }
+  form {
+    background-color: green;
+    height: 50px;
+    border: 1px solid blue;
+  }
+  .form input {
+    width: 95%;
+  }
+} */
