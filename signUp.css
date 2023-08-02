@@ -6,17 +6,20 @@
 }
 * {
   font-family: Manrope;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 a {
-  text-decoration: none !important;
+  text-decoration: none;
 }
 
 main {
-  height: 100vh !important;
-  border: 2px solid black;
+  height: 100vh;
 
-  flex-wrap: nowrap;
+  display: flex;
+  gap: 17rem;
 }
 .left-container {
   height: 90%;
@@ -62,34 +65,91 @@ main {
   right: 7%;
   bottom: 4%;
 }
-.eclipses img {
-  position: absolute;
-  bottom: 10%;
-  right: 5%;
-}
+
 form {
-  margin: 0 auto !important;
-  width: 70% !important;
+  display: flex;
+  flex-direction: column;
+  margin: 5% auto;
+  width: 70%;
+  height: 100%;
+}
+#signup-form {
+  margin: 1% auto;
+}
+input {
+  color: #000 !important;
+}
+
+form p {
+  margin-inline: auto;
 }
 form input,
 .h6 {
-  padding: 0.5rem !important;
-  margin-bottom: 1.5rem;
+  padding: 0.5rem;
+  margin-bottom: 1.8rem;
+}
+.inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputs input {
+  border: 1px solid darkgray;
+  padding: 0.8rem;
+}
+.inputs input,
+.social-btn button,
+#login {
+  border-radius: 10px;
+  width: 70%;
+  color: #fff;
+  font-size: 1rem;
+}
+#signup-login {
+  padding: 0.7rem 0.5rem;
+  width: 70%;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1rem;
 }
 .form input:focus {
-  outline: 1px solid var(--primary) !important;
+  outline: 1px solid var(--primary);
+}
+
+form button {
+  height: 3rem;
 }
 .btn {
-  width: 100% !important;
+  width: 100%;
   margin-bottom: 1rem;
   border: 1px solid var(--primary);
   background-color: var(--primary);
 }
+
+.form-texts {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  width: 70%;
+}
+.h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+#or {
+  margin-bottom: 1rem;
+}
+
 .social-btn button {
+  margin-bottom: 2rem;
+  display: flex;
+  color: #000;
+  align-items: center;
+  justify-content: center;
   background-color: transparent;
 }
 .btn .btn-primary {
-  background-color: var(--primary) !important;
+  background-color: var(--primary);
 }
 
 .btn:hover {
@@ -99,7 +159,7 @@ form input,
 }
 
 .btn svg {
-  margin-right: 1rem !important;
+  margin-right: 1rem;
 }
 .link-opacity-100 {
   color: var(--secondary);
