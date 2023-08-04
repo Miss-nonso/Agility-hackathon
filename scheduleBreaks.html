@@ -4,13 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TAB Schedule Break</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="./scheduleBreaks.css">
+    <link rel="stylesheet" href="countdown.css">
+
 </head>
 
 <body>
@@ -40,12 +43,13 @@
             </nav>
         </div>
     </header>
-    <main>
-        <h1 class="m-5 p-5 ps-5 pt-5 d-flex justify-content-center ps-5 gap-2">SCHEDULE BREAK</h1>
+    <main id="main">
+
         <div class="d-flex flex-md-row justify-content-center gap-5 flex-column align-items-center hero-container">
             <img class="w-25"
                 src="https://s3-alpha-sig.figma.com/img/f008/463e/e39300c8d712a78e32692839c05cd5e5?Expires=1691971200&Signature=XK7ae7Xcd6AcVkG-mv81-aTbeC96kGRMGPGzifXsBmB7i7t9txe5VGmgeBrK4MuNtlth8xr8b2cCUk3Bbz8c32r7j~W-5KYIT0apVOLIhwbZT0LYzaFHJtiQpYdrNlJPoCHotxP2VGkr-OVgOr890pEzTK3vLbBNDW6L3HaU67WcBMwm0XlssT3RMb4TsBu5k1i71hri96n-LDNfhA3YK-fU-ZoBQeu1oCMtuGQ5nGOaAA~r28UO7-48xxM9YiCst6UMTsTkKkzEdFuoU7dGXWMwuyGXwIliNYpQt7fnimZXHGbbkCrbiW4NaV9EwhQRSzTFZorjityKZgo8zuMNfA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4">
             <div class="para w-50">
+                <h1 class="m-5 p-5 ps-5 pt-5 d-flex justify-content-center ps-5 gap-2">SCHEDULE BREAK</h1>
                 <p>The frequency and duration of breaks can vary depending on the individual, their tasks, and their
                     preferences. However, research suggests that taking regular breaks throughout the day is essential
                     for maintaining productivity, focus, and overall well-being. Here are some general guidelines:</p>
@@ -60,21 +64,28 @@
                 <label for="colFormLabelSm" class="w-50 me-0 col-sm-2 col-form-label col-form-label-sm">Work
                     Duration</label>
                 <div class="w-50 col-sm-10">
-                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm">
+                    <input type="number" class="form-control form-control-sm" placeholder="Between 1-24(hours)"
+                        id="colFormLabelSm1">
+                    <i id="error1">Please enter a value between 1 to 24</i>
                 </div>
             </div>
             <div class="row mb-3">
                 <label for="colFormLabelSm" class="w-50 col-sm-2 col-form-label col-form-label-sm">Take A Break After
                     Every</label>
                 <div class="col-sm-10 w-50">
-                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm">
+                    <i id="recommended1">Recommended (minutes)</i>
+                    <input type="number" class="form-control form-control-sm" id="colFormLabelSm2">
+                    <i id="error2">Please enter a value between 5 to 180</i>
                 </div>
             </div>
             <div class="row">
                 <label for="colFormLabelSm" class="w-50 col-sm-2 col-form-label col-form-label-sm">Break
                     Duration</label>
                 <div class="col-sm-10 w-50">
-                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm">
+                    <i id="recommended2">Recommended (minutes)</i>
+                    <input type="number" class="form-control form-control-sm" id="colFormLabelSm3">
+                    <i id="error3">Please enter a value between 5 to 120</i><br><i id="total">Total break duration :
+                        <span id="totalFig"></span> minutes</i>
                 </div>
                 <div class="end col-12 w-100 p-3 ms-5">
                     <button class="btn button">Save</button>
@@ -88,7 +99,7 @@
                     <div class="options-holder">
                         <div class="form-check">
 
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled>
                             <label class="form-check-label" for="flexCheckDefault">
                                 Count Up
                             </label>
@@ -100,7 +111,7 @@
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled>
                             <label class="form-check-label" for="flexCheckDefault">
                                 Disable Reminder
                             </label>
@@ -118,7 +129,7 @@
                 </div>
             </div>
             <div class="schedule-text">
-                <button class="btn">Save</button>
+                <button class="btn" id="save-all">Save</button>
             </div>
         </div>
     </main>
@@ -184,7 +195,262 @@
             <div class="footer footer-bottom"></div>
         </div>
     </footer>
-    <script>
+
+    <!-- COUNTDOWN -->
+
+
+
+
+
+
+    <div class="countdown-modal" id="countdown-modal">
+
+        <a href="./welcome.html" id="back-link">
+            << Home</a>
+
+                <!-- COUNTDOWN -->
+                <div class="countdown-container" id="countdown-container">
+                    <h1 id="countdown">10</h1>
+                </div>
+                <!-- 3O MINUTES -->
+                <div class="pop-up-modal" id="pop-30">
+                    <div class="emoji-container"></div>
+                    <h2>30 Minutes</h2>
+                    <h3>to Break Time.</h3>
+                    <div class="cancel-holder">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="61" height="53" viewBox="0 0 61 53" fill="none"
+                            id="reminder-cancel">
+                            <g filter="url(#filter0_dii_407_1812)">
+                                <circle cx="30.5" cy="23.5" r="16.5" fill="url(#paint0_linear_407_1812)" />
+                            </g>
+                            <defs>
+                                <filter id="filter0_dii_407_1812" x="0.666667" y="0.333333" width="59.6667"
+                                    height="59.6667" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                    <feColorMatrix in="SourceAlpha" type="matrix"
+                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                    <feOffset dy="6.66667" />
+                                    <feGaussianBlur stdDeviation="6.66667" />
+                                    <feColorMatrix type="matrix"
+                                        values="0 0 0 0 0.0298039 0 0 0 0 0.052549 0 0 0 0 0.000784314 0 0 0 0.548 0" />
+                                    <feBlend mode="normal" in2="BackgroundImageFix"
+                                        result="effect1_dropShadow_407_1812" />
+                                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_407_1812"
+                                        result="shape" />
+                                    <feColorMatrix in="SourceAlpha" type="matrix"
+                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                    <feOffset dy="3.37778" />
+                                    <feGaussianBlur stdDeviation="1.68889" />
+                                    <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                                    <feColorMatrix type="matrix"
+                                        values="0 0 0 0 0.19909 0 0 0 0 0.351027 0 0 0 0 0.00523922 0 0 0 1 0" />
+                                    <feBlend mode="normal" in2="shape" result="effect2_innerShadow_407_1812" />
+                                    <feColorMatrix in="SourceAlpha" type="matrix"
+                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                    <feOffset dy="-3.37778" />
+                                    <feGaussianBlur stdDeviation="1.68889" />
+                                    <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                                    <feColorMatrix type="matrix"
+                                        values="0 0 0 0 0.0864314 0 0 0 0 0.152392 0 0 0 0 0.00227451 0 0 0 1 0" />
+                                    <feBlend mode="normal" in2="effect2_innerShadow_407_1812"
+                                        result="effect3_innerShadow_407_1812" />
+                                </filter>
+                                <linearGradient id="paint0_linear_407_1812" x1="30.5" y1="7" x2="30.5" y2="40"
+                                    gradientUnits="userSpaceOnUse">
+                                    <stop offset="0.9999" stop-color="#EA1A1A" />
+                                    <stop offset="1" stop-color="#305401" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none"
+                            id="reminder-x">
+                            <path
+                                d="M22 4.00125L17.9988 0L11 6.99875L4.00125 0L0 4.00125L6.99875 11L0 17.9988L4.00125 22L11 15.0012L17.9988 22L22 17.9988L15.0012 11L22 4.00125Z"
+                                fill="black" />
+                        </svg>
+                    </div>
+                </div>
+                <!-- 15 MINUTES -->
+                <div class="pop-up-modal" id="pop-15">
+                    <div class="emoji-container"></div>
+                    <h2>15 Minutes</h2>
+                    <h3>to Break Time.</h3>
+                    <div class="cancel-holder" id="cancel-15">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="61" height="53" viewBox="0 0 61 53" fill="none"
+                            id="reminder-cancel">
+                            <g filter="url(#filter0_dii_407_1812)">
+                                <circle cx="30.5" cy="23.5" r="16.5" fill="url(#paint0_linear_407_1812)" />
+                            </g>
+                            <defs>
+                                <filter id="filter0_dii_407_1812" x="0.666667" y="0.333333" width="59.6667"
+                                    height="59.6667" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                    <feColorMatrix in="SourceAlpha" type="matrix"
+                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                    <feOffset dy="6.66667" />
+                                    <feGaussianBlur stdDeviation="6.66667" />
+                                    <feColorMatrix type="matrix"
+                                        values="0 0 0 0 0.0298039 0 0 0 0 0.052549 0 0 0 0 0.000784314 0 0 0 0.548 0" />
+                                    <feBlend mode="normal" in2="BackgroundImageFix"
+                                        result="effect1_dropShadow_407_1812" />
+                                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_407_1812"
+                                        result="shape" />
+                                    <feColorMatrix in="SourceAlpha" type="matrix"
+                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                    <feOffset dy="3.37778" />
+                                    <feGaussianBlur stdDeviation="1.68889" />
+                                    <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                                    <feColorMatrix type="matrix"
+                                        values="0 0 0 0 0.19909 0 0 0 0 0.351027 0 0 0 0 0.00523922 0 0 0 1 0" />
+                                    <feBlend mode="normal" in2="shape" result="effect2_innerShadow_407_1812" />
+                                    <feColorMatrix in="SourceAlpha" type="matrix"
+                                        values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                    <feOffset dy="-3.37778" />
+                                    <feGaussianBlur stdDeviation="1.68889" />
+                                    <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                                    <feColorMatrix type="matrix"
+                                        values="0 0 0 0 0.0864314 0 0 0 0 0.152392 0 0 0 0 0.00227451 0 0 0 1 0" />
+                                    <feBlend mode="normal" in2="effect2_innerShadow_407_1812"
+                                        result="effect3_innerShadow_407_1812" />
+                                </filter>
+                                <linearGradient id="paint0_linear_407_1812" x1="30.5" y1="7" x2="30.5" y2="40"
+                                    gradientUnits="userSpaceOnUse">
+                                    <stop offset="0.9999" stop-color="#EA1A1A" />
+                                    <stop offset="1" stop-color="#305401" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none"
+                            id="reminder-x-15">
+                            <path
+                                d="M22 4.00125L17.9988 0L11 6.99875L4.00125 0L0 4.00125L6.99875 11L0 17.9988L4.00125 22L11 15.0012L17.9988 22L22 17.9988L15.0012 11L22 4.00125Z"
+                                fill="black" />
+                        </svg>
+                    </div>
+                </div>
+    </div>
+
+    <!-- INTRUSIVE BREAK OVER MODELS -->
+
+    <div class="modal intrusive-modal" id="timeout">
+        <div class="clock-container">
+            <img src="https://s3-alpha-sig.figma.com/img/1e10/66c7/5f23aafbc41b2505ede4348b5f42c2aa?Expires=1691971200&Signature=HyrQS6qjejhvfwulzzqjxsqJ7tS8NvAxMNbMhL1FeTmRB8EHiAU3~64G2cVwHFYowZpVuS8iKNEBNVLqnDIW~8EoRq2mt303Id1Tg6lC9aeRnItoCKKmr6RihokiZgMwqCbjbG-9DnfOq0q~QV9S~3~ymhMMbZksZCfa7jc8k7rk68GZ9~N5BNHCfIf-Xc7osZkTTLN1heydFAYZSr8BgIkHBLfRcoLKva-g9zNY2PbLcw6WThIDsdOaFTwBRU5Sa8Iy6UFcI6HTNCIRjViZF6INzYhMroxQvbmWXanJMXw9124A9uOHGDIAxTZkeWOIv3BM29~k6DEQvsI3Lc7nAQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
+                alt="Aimated clock">
+        </div>
+
+        <!-- BREAK OVER OPTIONS -->
+        <div class="options">
+            <!-- CANCEL OPTION -->
+            <div class="cancel-holder"><svg xmlns="http://www.w3.org/2000/svg" width="56" height="48"
+                    viewBox="0 0 56 48" fill="none" id="x-icon-container">
+                    <g filter="url(#filter0_dii_407_1064)">
+                        <circle cx="25.5" cy="23.5" r="16.5" fill="url(#paint0_linear_407_1064)" />
+                    </g>
+                    <defs>
+                        <filter id="filter0_dii_407_1064" x="-4.33333" y="0.333333" width="59.6667" height="59.6667"
+                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                            <feColorMatrix in="SourceAlpha" type="matrix"
+                                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                            <feOffset dy="6.66667" />
+                            <feGaussianBlur stdDeviation="6.66667" />
+                            <feColorMatrix type="matrix"
+                                values="0 0 0 0 0.0298039 0 0 0 0 0.052549 0 0 0 0 0.000784314 0 0 0 0.548 0" />
+                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_407_1064" />
+                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_407_1064"
+                                result="shape" />
+                            <feColorMatrix in="SourceAlpha" type="matrix"
+                                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                            <feOffset dy="3.37778" />
+                            <feGaussianBlur stdDeviation="1.68889" />
+                            <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                            <feColorMatrix type="matrix"
+                                values="0 0 0 0 0.19909 0 0 0 0 0.351027 0 0 0 0 0.00523922 0 0 0 1 0" />
+                            <feBlend mode="normal" in2="shape" result="effect2_innerShadow_407_1064" />
+                            <feColorMatrix in="SourceAlpha" type="matrix"
+                                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                            <feOffset dy="-3.37778" />
+                            <feGaussianBlur stdDeviation="1.68889" />
+                            <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                            <feColorMatrix type="matrix"
+                                values="0 0 0 0 0.0864314 0 0 0 0 0.152392 0 0 0 0 0.00227451 0 0 0 1 0" />
+                            <feBlend mode="normal" in2="effect2_innerShadow_407_1064"
+                                result="effect3_innerShadow_407_1064" />
+                        </filter>
+                        <linearGradient id="paint0_linear_407_1064" x1="25.5" y1="7" x2="25.5" y2="40"
+                            gradientUnits="userSpaceOnUse">
+                            <stop offset="0.9999" stop-color="#EA1A1A" />
+                            <stop offset="1" stop-color="#305401" />
+                        </linearGradient>
+                    </defs>
+                </svg><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none"
+                    id="x">
+                    <path
+                        d="M22 4.00125L17.9988 0L11 6.99875L4.00125 0L0 4.00125L6.99875 11L0 17.9988L4.00125 22L11 15.0012L17.9988 22L22 17.9988L15.0012 11L22 4.00125Z"
+                        fill="black" />
+                </svg>
+            </div>
+            <!-- SNOOZE OPTION -->
+            <div class="snooze-holder">
+                <svg xmlns="http://www.w3.org/2000/svg" width="61" height="48" viewBox="0 0 61 48" fill="none"
+                    id="snooze-icon-container">
+                    <g filter="url(#filter0_dii_407_1065)">
+                        <circle cx="30.5" cy="23.5" r="16.5" fill="url(#paint0_linear_407_1065)" />
+                    </g>
+                    <defs>
+                        <filter id="filter0_dii_407_1065" x="0.666667" y="0.333333" width="59.6667" height="59.6667"
+                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                            <feColorMatrix in="SourceAlpha" type="matrix"
+                                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                            <feOffset dy="6.66667" />
+                            <feGaussianBlur stdDeviation="6.66667" />
+                            <feColorMatrix type="matrix"
+                                values="0 0 0 0 0.0298039 0 0 0 0 0.052549 0 0 0 0 0.000784314 0 0 0 0.548 0" />
+                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_407_1065" />
+                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_407_1065"
+                                result="shape" />
+                            <feColorMatrix in="SourceAlpha" type="matrix"
+                                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                            <feOffset dy="3.37778" />
+                            <feGaussianBlur stdDeviation="1.68889" />
+                            <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                            <feColorMatrix type="matrix"
+                                values="0 0 0 0 0.19909 0 0 0 0 0.351027 0 0 0 0 0.00523922 0 0 0 1 0" />
+                            <feBlend mode="normal" in2="shape" result="effect2_innerShadow_407_1065" />
+                            <feColorMatrix in="SourceAlpha" type="matrix"
+                                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                            <feOffset dy="-3.37778" />
+                            <feGaussianBlur stdDeviation="1.68889" />
+                            <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                            <feColorMatrix type="matrix"
+                                values="0 0 0 0 0.0864314 0 0 0 0 0.152392 0 0 0 0 0.00227451 0 0 0 1 0" />
+                            <feBlend mode="normal" in2="effect2_innerShadow_407_1065"
+                                result="effect3_innerShadow_407_1065" />
+                        </filter>
+                        <linearGradient id="paint0_linear_407_1065" x1="30.5" y1="7" x2="30.5" y2="40"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#192C01" />
+                            <stop offset="1" stop-color="#305401" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none"
+                    id="snooze">
+                    <path
+                        d="M5.88 1.54417L4.6 0L0 3.88565L1.29 5.42981L5.88 1.54417ZM20 3.89574L15.4 0L14.11 1.54417L18.71 5.43991L20 3.89574ZM10 2.15981C7.61305 2.15981 5.32387 3.11681 3.63604 4.82026C1.94821 6.52372 1 8.8341 1 11.2431C1 13.6522 1.94821 15.9626 3.63604 17.666C5.32387 19.3695 7.61305 20.3265 10 20.3265C12.3869 20.3265 14.6761 19.3695 16.364 17.666C18.0518 15.9626 19 13.6522 19 11.2431C19 8.8341 18.0518 6.52372 16.364 4.82026C14.6761 3.11681 12.3869 2.15981 10 2.15981ZM10 18.308C8.14348 18.308 6.36301 17.5636 5.05025 16.2387C3.7375 14.9138 3 13.1169 3 11.2431C3 9.36944 3.7375 7.57248 5.05025 6.24757C6.36301 4.92266 8.14348 4.17833 10 4.17833C11.8565 4.17833 13.637 4.92266 14.9497 6.24757C16.2625 7.57248 17 9.36944 17 11.2431C17 13.1169 16.2625 14.9138 14.9497 16.2387C13.637 17.5636 11.8565 18.308 10 18.308ZM7 9.22463H10.63L7 13.4635V15.2802H13V13.2617H9.37L13 9.02278V7.20611H7V9.22463Z"
+                        fill="white" />
+                </svg>
+            </div>
+
+        </div>
+        <h1>Break Time!</h1>
+        <h1 id="user-message">Ada, Help <br>Yourself. </h1>
+    </div>
+
+    <script src="tab.js"></script>
+
+    <!-- <script>
         const socket = io();
 
         const workingTimeForm = document.getElementById('working-time-form');
@@ -238,7 +504,7 @@
             // Display the notification as a web popup
             alert(data.message);
         });
-    </script>
+    </script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
